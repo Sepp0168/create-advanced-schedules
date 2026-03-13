@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "createadvancedschedules:block/emergency_stop_button"
+    }
+  }
+}

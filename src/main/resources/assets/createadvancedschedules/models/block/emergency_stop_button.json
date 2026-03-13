@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "plate": "createadvancedschedules:block/emergency_stop_button_plate",
+    "button": "createadvancedschedules:block/emergency_stop_button_button"
+  },
+  "elements": [
+    {
+      "from": [2, 2, 0],
+      "to": [14, 14, 2],
+      "faces": {
+        "north": { "texture": "#plate" },
+        "south": { "texture": "#plate" },
+        "east": { "texture": "#plate" },
+        "west": { "texture": "#plate" },
+        "up": { "texture": "#plate" },
+        "down": { "texture": "#plate" }
+      }
+    },
+    {
+      "from": [5, 5, 2],
+      "to": [11, 11, 6],
+      "faces": {
+        "north": { "texture": "#button" },
+        "south": { "texture": "#button" },
+        "east": { "texture": "#button" },
+        "west": { "texture": "#button" },
+        "up": { "texture": "#button" },
+        "down": { "texture": "#button" }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1103 @@
+﻿Compiled from "PonderScene.java"
+public class net.createmod.ponder.foundation.PonderScene {
+  public static final java.lang.String TITLE_KEY;
+
+  final net.createmod.ponder.foundation.registration.PonderLocalization localization;
+
+  net.minecraft.resources.ResourceLocation sceneId;
+
+  java.util.List<net.createmod.ponder.foundation.instruction.PonderInstruction> schedule;
+
+  int basePlateOffsetX;
+
+  int basePlateOffsetZ;
+
+  int basePlateSize;
+
+  float scaleFactor;
+
+  float yOffset;
+
+  boolean hidePlatformShadow;
+
+  public net.createmod.ponder.foundation.PonderScene(net.createmod.ponder.api.level.PonderLevel, net.createmod.ponder.foundation.registration.PonderLocalization, java.lang.String, net.minecraft.resources.ResourceLocation, java.util.Collection<net.minecraft.resources.ResourceLocation>, java.util.Collection<net.createmod.ponder.api.registration.StoryBoardEntry$SceneOrderingEntry>);
+    Code:
+       0: aload_0
+       1: invokespecial #84                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iconst_1
+       6: putfield      #86                 // Field nextUpEnabled:Z
+       9: aload_1
+      10: ifnull        18
+      13: aload_1
+      14: aload_0
+      15: putfield      #92                 // Field net/createmod/ponder/api/level/PonderLevel.scene:Lnet/createmod/ponder/foundation/PonderScene;
+      18: aload_0
+      19: aload_1
+      20: putfield      #102                // Field world:Lnet/createmod/ponder/api/level/PonderLevel;
+      23: aload_0
+      24: aload_2
+      25: putfield      #104                // Field localization:Lnet/createmod/ponder/foundation/registration/PonderLocalization;
+      28: aload_0
+      29: getstatic     #109                // Field net/minecraft/world/phys/Vec3.f_82478_:Lnet/minecraft/world/phys/Vec3;
+      32: putfield      #111                // Field pointOfInterest:Lnet/minecraft/world/phys/Vec3;
+      35: aload_0
+      36: iconst_1
+      37: putfield      #113                // Field textIndex:I
+      40: aload_0
+      41: iconst_0
+      42: putfield      #115                // Field hidePlatformShadow:Z
+      45: aload_0
+      46: aload_3
+      47: putfield      #117                // Field namespace:Ljava/lang/String;
+      50: aload_0
+      51: aload         4
+      53: putfield      #119                // Field location:Lnet/minecraft/resources/ResourceLocation;
+      56: aload_0
+      57: new           #98                 // class net/minecraft/resources/ResourceLocation
+      60: dup
+      61: aload_3
+      62: ldc           #121                // String missing_title
+      64: invokespecial #124                // Method net/minecraft/resources/ResourceLocation."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+      67: putfield      #126                // Field sceneId:Lnet/minecraft/resources/ResourceLocation;
+      70: aload_0
+      71: new           #128                // class net/createmod/catnip/outliner/Outliner
+      74: dup
+      75: invokespecial #129                // Method net/createmod/catnip/outliner/Outliner."<init>":()V
+      78: putfield      #131                // Field outliner:Lnet/createmod/catnip/outliner/Outliner;
+      81: aload_0
+      82: new           #133                // class java/util/HashSet
+      85: dup
+      86: invokespecial #134                // Method java/util/HashSet."<init>":()V
+      89: putfield      #136                // Field elements:Ljava/util/Set;
+      92: aload_0
+      93: new           #138                // class java/util/HashMap
+      96: dup
+      97: invokespecial #139                // Method java/util/HashMap."<init>":()V
+     100: putfield      #141                // Field linkedElements:Ljava/util/Map;
+     103: aload_0
+     104: aload         5
+     106: invokeinterface #145,  1          // InterfaceMethod java/util/Collection.stream:()Ljava/util/stream/Stream;
+     111: invokestatic  #151                // Method net/createmod/ponder/foundation/PonderIndex.getTagAccess:()Lnet/createmod/ponder/api/registration/TagRegistryAccess;
+     114: dup
+     115: invokestatic  #157                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+     118: pop
+     119: invokedynamic #177,  0            // InvokeDynamic #0:apply:(Lnet/createmod/ponder/api/registration/TagRegistryAccess;)Ljava/util/function/Function;
+     124: invokeinterface #183,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+     129: invokeinterface #187,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+     134: putfield      #189                // Field tags:Ljava/util/List;
+     137: aload_0
+     138: new           #191                // class java/util/ArrayList
+     141: dup
+     142: aload         6
+     144: invokespecial #194                // Method java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+     147: putfield      #196                // Field orderingEntries:Ljava/util/List;
+     150: aload_0
+     151: new           #191                // class java/util/ArrayList
+     154: dup
+     155: invokespecial #197                // Method java/util/ArrayList."<init>":()V
+     158: putfield      #199                // Field schedule:Ljava/util/List;
+     161: aload_0
+     162: new           #191                // class java/util/ArrayList
+     165: dup
+     166: invokespecial #197                // Method java/util/ArrayList."<init>":()V
+     169: putfield      #201                // Field activeSchedule:Ljava/util/List;
+     172: aload_0
+     173: new           #9                  // class net/createmod/ponder/foundation/PonderScene$SceneTransform
+     176: dup
+     177: aload_0
+     178: invokespecial #204                // Method net/createmod/ponder/foundation/PonderScene$SceneTransform."<init>":(Lnet/createmod/ponder/foundation/PonderScene;)V
+     181: putfield      #206                // Field transform:Lnet/createmod/ponder/foundation/PonderScene$SceneTransform;
+     184: aload_0
+     185: aload_0
+     186: invokevirtual #210                // Method getBounds:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+     189: invokevirtual #216                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.m_71056_:()I
+     192: putfield      #218                // Field basePlateSize:I
+     195: aload_0
+     196: new           #7                  // class net/createmod/ponder/foundation/PonderScene$SceneCamera
+     199: dup
+     200: invokespecial #219                // Method net/createmod/ponder/foundation/PonderScene$SceneCamera."<init>":()V
+     203: putfield      #221                // Field camera:Lnet/createmod/ponder/foundation/PonderScene$SceneCamera;
+     206: aload_0
+     207: new           #223                // class net/createmod/ponder/foundation/element/WorldSectionElementImpl
+     210: dup
+     211: invokespecial #224                // Method net/createmod/ponder/foundation/element/WorldSectionElementImpl."<init>":()V
+     214: putfield      #226                // Field baseWorldSection:Lnet/createmod/ponder/api/element/WorldSectionElement;
+     217: aload_0
+     218: new           #228                // class it/unimi/dsi/fastutil/ints/IntArrayList
+     221: dup
+     222: iconst_4
+     223: invokespecial #231                // Method it/unimi/dsi/fastutil/ints/IntArrayList."<init>":(I)V
+     226: putfield      #233                // Field keyframeTimes:Lit/unimi/dsi/fastutil/ints/IntList;
+     229: aload_0
+     230: fconst_1
+     231: putfield      #235                // Field scaleFactor:F
+     234: aload_0
+     235: fconst_0
+     236: putfield      #237                // Field yOffset:F
+     239: aload_1
+     240: ifnull        261
+     243: aload_0
+     244: new           #239                // class net/minecraft/world/entity/decoration/ArmorStand
+     247: dup
+     248: aload_1
+     249: dconst_0
+     250: dconst_0
+     251: dconst_0
+     252: invokespecial #242                // Method net/minecraft/world/entity/decoration/ArmorStand."<init>":(Lnet/minecraft/world/level/Level;DDD)V
+     255: putfield      #244                // Field renderViewEntity:Lnet/minecraft/world/entity/Entity;
+     258: goto          266
+     261: aload_0
+     262: aconst_null
+     263: putfield      #244                // Field renderViewEntity:Lnet/minecraft/world/entity/Entity;
+     266: aload_0
+     267: new           #106                // class net/minecraft/world/phys/Vec3
+     270: dup
+     271: dconst_0
+     272: ldc2_w        #245                // double 4.0d
+     275: dconst_0
+     276: invokespecial #249                // Method net/minecraft/world/phys/Vec3."<init>":(DDD)V
+     279: invokevirtual #253                // Method setPointOfInterest:(Lnet/minecraft/world/phys/Vec3;)V
+     282: return
+
+  public void deselect();
+    Code:
+       0: aload_0
+       1: ldc_w         #260                // class net/createmod/ponder/api/element/WorldSectionElement
+       4: invokedynamic #272,  0            // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+       9: invokevirtual #276                // Method forEach:(Ljava/lang/Class;Ljava/util/function/Consumer;)V
+      12: return
+
+  public net.createmod.catnip.data.Pair<net.minecraft.world.item.ItemStack, net.minecraft.core.BlockPos> rayTraceScene(net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3);
+    Code:
+       0: new           #281                // class org/apache/commons/lang3/mutable/MutableObject
+       3: dup
+       4: invokespecial #282                // Method org/apache/commons/lang3/mutable/MutableObject."<init>":()V
+       7: astore_3
+       8: new           #284                // class org/apache/commons/lang3/mutable/MutableDouble
+      11: dup
+      12: dconst_0
+      13: invokespecial #287                // Method org/apache/commons/lang3/mutable/MutableDouble."<init>":(D)V
+      16: astore        4
+      18: aload_0
+      19: ldc_w         #260                // class net/createmod/ponder/api/element/WorldSectionElement
+      22: aload_0
+      23: aload_1
+      24: aload_2
+      25: aload_3
+      26: aload         4
+      28: invokedynamic #295,  0            // InvokeDynamic #2:accept:(Lnet/createmod/ponder/foundation/PonderScene;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;Lorg/apache/commons/lang3/mutable/MutableObject;Lorg/apache/commons/lang3/mutable/MutableDouble;)Ljava/util/function/Consumer;
+      33: invokevirtual #276                // Method forEach:(Ljava/lang/Class;Ljava/util/function/Consumer;)V
+      36: aload_3
+      37: invokevirtual #299                // Method org/apache/commons/lang3/mutable/MutableObject.getValue:()Ljava/lang/Object;
+      40: ifnonnull     53
+      43: getstatic     #305                // Field net/minecraft/world/item/ItemStack.f_41583_:Lnet/minecraft/world/item/ItemStack;
+      46: getstatic     #311                // Field net/minecraft/core/BlockPos.f_121853_:Lnet/minecraft/core/BlockPos;
+      49: invokestatic  #317                // Method net/createmod/catnip/data/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lnet/createmod/catnip/data/Pair;
+      52: areturn
+      53: aload_3
+      54: invokevirtual #299                // Method org/apache/commons/lang3/mutable/MutableObject.getValue:()Ljava/lang/Object;
+      57: checkcast     #313                // class net/createmod/catnip/data/Pair
+      60: invokevirtual #320                // Method net/createmod/catnip/data/Pair.getSecond:()Ljava/lang/Object;
+      63: checkcast     #313                // class net/createmod/catnip/data/Pair
+      66: astore        5
+      68: aload         5
+      70: invokevirtual #320                // Method net/createmod/catnip/data/Pair.getSecond:()Ljava/lang/Object;
+      73: checkcast     #322                // class net/minecraft/world/phys/BlockHitResult
+      76: invokevirtual #326                // Method net/minecraft/world/phys/BlockHitResult.m_82425_:()Lnet/minecraft/core/BlockPos;
+      79: astore        6
+      81: new           #307                // class net/minecraft/core/BlockPos
+      84: dup
+      85: aload_0
+      86: getfield      #328                // Field basePlateOffsetX:I
+      89: iconst_0
+      90: aload_0
+      91: getfield      #330                // Field basePlateOffsetZ:I
+      94: invokespecial #333                // Method net/minecraft/core/BlockPos."<init>":(III)V
+      97: astore        7
+      99: aload_0
+     100: getfield      #102                // Field world:Lnet/createmod/ponder/api/level/PonderLevel;
+     103: invokevirtual #334                // Method net/createmod/ponder/api/level/PonderLevel.getBounds:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+     106: aload         6
+     108: invokevirtual #338                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.m_71051_:(Lnet/minecraft/core/Vec3i;)Z
+     111: ifne          122
+     114: getstatic     #305                // Field net/minecraft/world/item/ItemStack.f_41583_:Lnet/minecraft/world/item/ItemStack;
+     117: aconst_null
+     118: invokestatic  #317                // Method net/createmod/catnip/data/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lnet/createmod/catnip/data/Pair;
+     121: areturn
+     122: aload         7
+     124: aload         7
+     126: new           #340                // class net/minecraft/core/Vec3i
+     129: dup
+     130: aload_0
+     131: getfield      #218                // Field basePlateSize:I
+     134: iconst_1
+     135: isub
+     136: iconst_0
+     137: aload_0
+     138: getfield      #218                // Field basePlateSize:I
+     141: iconst_1
+     142: isub
+     143: invokespecial #341                // Method net/minecraft/core/Vec3i."<init>":(III)V
+     146: invokevirtual #345                // Method net/minecraft/core/BlockPos.m_121955_:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos;
+     149: invokestatic  #349                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.m_162375_:(Lnet/minecraft/core/Vec3i;Lnet/minecraft/core/Vec3i;)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+     152: aload         6
+     154: invokevirtual #338                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.m_71051_:(Lnet/minecraft/core/Vec3i;)Z
+     157: ifeq          195
+     160: invokestatic  #353                // Method net/createmod/ponder/foundation/PonderIndex.editingModeActive:()Z
+     163: ifeq          186
+     166: aload_3
+     167: invokevirtual #299                // Method org/apache/commons/lang3/mutable/MutableObject.getValue:()Ljava/lang/Object;
+     170: checkcast     #313                // class net/createmod/catnip/data/Pair
+     173: invokevirtual #356                // Method net/createmod/catnip/data/Pair.getFirst:()Ljava/lang/Object;
+     176: checkcast     #260                // class net/createmod/ponder/api/element/WorldSectionElement
+     179: aload         6
+     181: invokeinterface #360,  2          // InterfaceMethod net/createmod/ponder/api/element/WorldSectionElement.selectBlock:(Lnet/minecraft/core/BlockPos;)V
+     186: getstatic     #305                // Field net/minecraft/world/item/ItemStack.f_41583_:Lnet/minecraft/world/item/ItemStack;
+     189: aload         6
+     191: invokestatic  #317                // Method net/createmod/catnip/data/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lnet/createmod/catnip/data/Pair;
+     194: areturn
+     195: aload_3
+     196: invokevirtual #299                // Method org/apache/commons/lang3/mutable/MutableObject.getValue:()Ljava/lang/Object;
+     199: checkcast     #313                // class net/createmod/catnip/data/Pair
+     202: invokevirtual #356                // Method net/createmod/catnip/data/Pair.getFirst:()Ljava/lang/Object;
+     205: checkcast     #260                // class net/createmod/ponder/api/element/WorldSectionElement
+     208: aload         6
+     210: invokeinterface #360,  2          // InterfaceMethod net/createmod/ponder/api/element/WorldSectionElement.selectBlock:(Lnet/minecraft/core/BlockPos;)V
+     215: aload_0
+     216: getfield      #102                // Field world:Lnet/createmod/ponder/api/level/PonderLevel;
+     219: aload         6
+     221: invokevirtual #364                // Method net/createmod/ponder/api/level/PonderLevel.m_8055_:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     224: astore        8
+     226: aload         5
+     228: invokevirtual #320                // Method net/createmod/catnip/data/Pair.getSecond:()Ljava/lang/Object;
+     231: checkcast     #322                // class net/minecraft/world/phys/BlockHitResult
+     234: invokevirtual #368                // Method net/minecraft/world/phys/BlockHitResult.m_82434_:()Lnet/minecraft/core/Direction;
+     237: astore        9
+     239: aload         5
+     241: invokevirtual #320                // Method net/createmod/catnip/data/Pair.getSecond:()Ljava/lang/Object;
+     244: checkcast     #322                // class net/minecraft/world/phys/BlockHitResult
+     247: invokevirtual #372                // Method net/minecraft/world/phys/BlockHitResult.m_82450_:()Lnet/minecraft/world/phys/Vec3;
+     250: astore        10
+     252: getstatic     #378                // Field net/createmod/catnip/platform/CatnipServices.HOOKS:Lnet/createmod/catnip/platform/services/ModHooksHelper;
+     255: aload         8
+     257: new           #322                // class net/minecraft/world/phys/BlockHitResult
+     260: dup
+     261: aload         10
+     263: aload         9
+     265: aload         6
+     267: iconst_1
+     268: invokespecial #381                // Method net/minecraft/world/phys/BlockHitResult."<init>":(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/core/Direction;Lnet/minecraft/core/BlockPos;Z)V
+     271: aload_0
+     272: getfield      #102                // Field world:Lnet/createmod/ponder/api/level/PonderLevel;
+     275: aload         6
+     277: invokestatic  #387                // Method net/minecraft/client/Minecraft.m_91087_:()Lnet/minecraft/client/Minecraft;
+     280: getfield      #391                // Field net/minecraft/client/Minecraft.f_91074_:Lnet/minecraft/client/player/LocalPlayer;
+     283: invokeinterface #397,  6          // InterfaceMethod net/createmod/catnip/platform/services/ModHooksHelper.getCloneItemFromBlockstate:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/phys/HitResult;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;)Lnet/minecraft/world/item/ItemStack;
+     288: astore        11
+     290: aload         11
+     292: aload         6
+     294: invokestatic  #317                // Method net/createmod/catnip/data/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lnet/createmod/catnip/data/Pair;
+     297: areturn
+
+  public void reset();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: putfield      #417                // Field currentTime:I
+       5: aload_0
+       6: getfield      #201                // Field activeSchedule:Ljava/util/List;
+       9: invokeinterface #422,  1          // InterfaceMethod java/util/List.clear:()V
+      14: aload_0
+      15: getfield      #199                // Field schedule:Ljava/util/List;
+      18: aload_0
+      19: invokedynamic #431,  0            // InvokeDynamic #3:accept:(Lnet/createmod/ponder/foundation/PonderScene;)Ljava/util/function/Consumer;
+      24: invokeinterface #434,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+      29: return
+
+  public void begin();
+    Code:
+       0: aload_0
+       1: invokevirtual #437                // Method reset:()V
+       4: aload_0
+       5: aload_0
+       6: invokedynamic #444,  0            // InvokeDynamic #4:accept:(Lnet/createmod/ponder/foundation/PonderScene;)Ljava/util/function/Consumer;
+      11: invokevirtual #445                // Method forEach:(Ljava/util/function/Consumer;)V
+      14: aload_0
+      15: getfield      #102                // Field world:Lnet/createmod/ponder/api/level/PonderLevel;
+      18: invokevirtual #448                // Method net/createmod/ponder/api/level/PonderLevel.restore:()V
+      21: aload_0
+      22: getfield      #136                // Field elements:Ljava/util/Set;
+      25: invokeinterface #451,  1          // InterfaceMethod java/util/Set.clear:()V
+      30: aload_0
+      31: getfield      #141                // Field linkedElements:Ljava/util/Map;
+      34: invokeinterface #454,  1          // InterfaceMethod java/util/Map.clear:()V
+      39: aload_0
+      40: getfield      #233                // Field keyframeTimes:Lit/unimi/dsi/fastutil/ints/IntList;
+      43: invokeinterface #457,  1          // InterfaceMethod it/unimi/dsi/fastutil/ints/IntList.clear:()V
+      48: aload_0
+      49: new           #9                  // class net/createmod/ponder/foundation/PonderScene$SceneTransform
+      52: dup
+      53: aload_0
+      54: invokespecial #204                // Method net/createmod/ponder/foundation/PonderScene$SceneTransform."<init>":(Lnet/createmod/ponder/foundation/PonderScene;)V
+      57: putfield      #206                // Field transform:Lnet/createmod/ponder/foundation/PonderScene$SceneTransform;
+      60: aload_0
+      61: iconst_0
+      62: putfield      #459                // Field finished:Z
+      65: aload_0
+      66: new           #106                // class net/minecraft/world/phys/Vec3
+      69: dup
+      70: dconst_0
+      71: ldc2_w        #245                // double 4.0d
+      74: dconst_0
+      75: invokespecial #249                // Method net/minecraft/world/phys/Vec3."<init>":(DDD)V
+      78: invokevirtual #253                // Method setPointOfInterest:(Lnet/minecraft/world/phys/Vec3;)V
+      81: aload_0
+      82: getfield      #226                // Field baseWorldSection:Lnet/createmod/ponder/api/element/WorldSectionElement;
+      85: invokeinterface #462,  1          // InterfaceMethod net/createmod/ponder/api/element/WorldSectionElement.setEmpty:()V
+      90: aload_0
+      91: getfield      #226                // Field baseWorldSection:Lnet/createmod/ponder/api/element/WorldSectionElement;
+      94: fconst_1
+      95: invokeinterface #466,  2          // InterfaceMethod net/createmod/ponder/api/element/WorldSectionElement.forceApplyFade:(F)V
+     100: aload_0
+     101: getfield      #136                // Field elements:Ljava/util/Set;
+     104: aload_0
+     105: getfield      #226                // Field baseWorldSection:Lnet/createmod/ponder/api/element/WorldSectionElement;
+     108: invokeinterface #470,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+     113: pop
+     114: aload_0
+     115: iconst_0
+     116: putfield      #472                // Field totalTime:I
+     119: aload_0
+     120: iconst_0
+     121: putfield      #474                // Field stoppedCounting:Z
+     124: aload_0
+     125: getfield      #201                // Field activeSchedule:Ljava/util/List;
+     128: aload_0
+     129: getfield      #199                // Field schedule:Ljava/util/List;
+     132: invokeinterface #478,  2          // InterfaceMethod java/util/List.addAll:(Ljava/util/Collection;)Z
+     137: pop
+     138: aload_0
+     139: getfield      #201                // Field activeSchedule:Ljava/util/List;
+     142: aload_0
+     143: invokedynamic #483,  0            // InvokeDynamic #5:accept:(Lnet/createmod/ponder/foundation/PonderScene;)Ljava/util/function/Consumer;
+     148: invokeinterface #434,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+     153: return
+
+  public net.createmod.ponder.api.element.WorldSectionElement getBaseWorldSection();
+    Code:
+       0: aload_0
+       1: getfield      #226                // Field baseWorldSection:Lnet/createmod/ponder/api/element/WorldSectionElement;
+       4: areturn
+
+  public float getSceneProgress();
+    Code:
+       0: aload_0
+       1: getfield      #472                // Field totalTime:I
+       4: ifne          11
+       7: fconst_0
+       8: goto          22
+      11: aload_0
+      12: getfield      #417                // Field currentTime:I
+      15: i2f
+      16: aload_0
+      17: getfield      #472                // Field totalTime:I
+      20: i2f
+      21: fdiv
+      22: freturn
+
+  public void fadeOut();
+    Code:
+       0: aload_0
+       1: invokevirtual #437                // Method reset:()V
+       4: aload_0
+       5: getfield      #201                // Field activeSchedule:Ljava/util/List;
+       8: new           #490                // class net/createmod/ponder/foundation/instruction/HideAllInstruction
+      11: dup
+      12: bipush        10
+      14: aconst_null
+      15: invokespecial #493                // Method net/createmod/ponder/foundation/instruction/HideAllInstruction."<init>":(ILnet/minecraft/core/Direction;)V
+      18: invokeinterface #494,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      23: pop
+      24: return
+
+  public void renderScene(net.createmod.catnip.render.SuperRenderTypeBuffer, net.minecraft.client.gui.GuiGraphics, float);
+    Code:
+       0: aload_2
+       1: invokevirtual #502                // Method net/minecraft/client/gui/GuiGraphics.m_280168_:()Lcom/mojang/blaze3d/vertex/PoseStack;
+       4: astore        4
+       6: aload         4
+       8: invokevirtual #507                // Method com/mojang/blaze3d/vertex/PoseStack.m_85836_:()V
+      11: invokestatic  #387                // Method net/minecraft/client/Minecraft.m_91087_:()Lnet/minecraft/client/Minecraft;
+      14: astore        5
+      16: aload         5
+      18: getfield      #510                // Field net/minecraft/client/Minecraft.f_91075_:Lnet/minecraft/world/entity/Entity;
+      21: astore        6
+      23: aload         5
+      25: aload_0
+      26: getfield      #244                // Field renderViewEntity:Lnet/minecraft/world/entity/Entity;
+      29: putfield      #510                // Field net/minecraft/client/Minecraft.f_91075_:Lnet/minecraft/world/entity/Entity;
+      32: aload_0
+      33: ldc_w         #512                // class net/createmod/ponder/api/element/PonderSceneElement
+      36: aload_0
+      37: aload_1
+      38: aload_2
+      39: fload_3
+      40: invokedynamic #522,  0            // InvokeDynamic #6:accept:(Lnet/createmod/ponder/foundation/PonderScene;Lnet/createmod/catnip/render/SuperRenderTypeBuffer;Lnet/minecraft/client/gui/GuiGraphics;F)Ljava/util/function/Consumer;
+      45: invokevirtual #525                // Method forEachVisible:(Ljava/lang/Class;Ljava/util/function/Consumer;)V
+      48: aload         5
+      50: aload         6
+      52: putfield      #510                // Field net/minecraft/client/Minecraft.f_91075_:Lnet/minecraft/world/entity/Entity;
+      55: invokestatic  #530                // Method net/minecraft/client/renderer/RenderType.m_110506_:()Ljava/util/List;
+      58: invokeinterface #534,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      63: astore        7
+      65: aload         7
+      67: invokeinterface #543,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      72: ifeq          108
+      75: aload         7
+      77: invokeinterface #546,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      82: checkcast     #527                // class net/minecraft/client/renderer/RenderType
+      85: astore        8
+      87: aload_0
+      88: ldc_w         #512                // class net/createmod/ponder/api/element/PonderSceneElement
+      91: aload_0
+      92: aload_1
+      93: aload         8
+      95: aload_2
+      96: fload_3
+      97: invokedynamic #554,  0            // InvokeDynamic #7:accept:(Lnet/createmod/ponder/foundation/PonderScene;Lnet/createmod/catnip/render/SuperRenderTypeBuffer;Lnet/minecraft/client/renderer/RenderType;Lnet/minecraft/client/gui/GuiGraphics;F)Ljava/util/function/Consumer;
+     102: invokevirtual #525                // Method forEachVisible:(Ljava/lang/Class;Ljava/util/function/Consumer;)V
+     105: goto          65
+     108: aload_0
+     109: ldc_w         #512                // class net/createmod/ponder/api/element/PonderSceneElement
+     112: aload_0
+     113: aload_1
+     114: aload_2
+     115: fload_3
+     116: invokedynamic #559,  0            // InvokeDynamic #8:accept:(Lnet/createmod/ponder/foundation/PonderScene;Lnet/createmod/catnip/render/SuperRenderTypeBuffer;Lnet/minecraft/client/gui/GuiGraphics;F)Ljava/util/function/Consumer;
+     121: invokevirtual #525                // Method forEachVisible:(Ljava/lang/Class;Ljava/util/function/Consumer;)V
+     124: aload_0
+     125: getfield      #221                // Field camera:Lnet/createmod/ponder/foundation/PonderScene$SceneCamera;
+     128: aload_0
+     129: getfield      #206                // Field transform:Lnet/createmod/ponder/foundation/PonderScene$SceneTransform;
+     132: getfield      #563                // Field net/createmod/ponder/foundation/PonderScene$SceneTransform.xRotation:Lnet/createmod/catnip/animation/LerpedFloat;
+     135: fload_3
+     136: invokevirtual #568                // Method net/createmod/catnip/animation/LerpedFloat.getValue:(F)F
+     139: ldc_w         #569                // float 90.0f
+     142: fadd
+     143: aload_0
+     144: getfield      #206                // Field transform:Lnet/createmod/ponder/foundation/PonderScene$SceneTransform;
+     147: getfield      #572                // Field net/createmod/ponder/foundation/PonderScene$SceneTransform.yRotation:Lnet/createmod/catnip/animation/LerpedFloat;
+     150: fload_3
+     151: invokevirtual #568                // Method net/createmod/catnip/animation/LerpedFloat.getValue:(F)F
+     154: ldc_w         #573                // float 180.0f
+     157: fadd
+     158: invokevirtual #577                // Method net/createmod/ponder/foundation/PonderScene$SceneCamera.set:(FF)V
+     161: aload_0
+     162: getfield      #102                // Field world:Lnet/createmod/ponder/api/level/PonderLevel;
+     165: aload         4
+     167: aload_1
+     168: aload_0
+     169: getfield      #221                // Field camera:Lnet/createmod/ponder/foundation/PonderScene$SceneCamera;
+     172: fload_3
+     173: invokevirtual #581                // Method net/createmod/ponder/api/level/PonderLevel.renderEntities:(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/createmod/catnip/render/SuperRenderTypeBuffer;Lnet/minecraft/client/Camera;F)V
+     176: aload_0
+     177: getfield      #102                // Field world:Lnet/createmod/ponder/api/level/PonderLevel;
+     180: aload         4
+     182: aload_1
+     183: aload_0
+     184: getfield      #221                // Field camera:Lnet/createmod/ponder/foundation/PonderScene$SceneCamera;
+     187: fload_3
+     188: invokevirtual #585                // Method net/createmod/ponder/api/level/PonderLevel.renderParticles:(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;Lnet/minecraft/client/Camera;F)V
+     191: aload_0
+     192: getfield      #131                // Field outliner:Lnet/createmod/catnip/outliner/Outliner;
+     195: aload         4
+     197: aload_1
+     198: getstatic     #109                // Field net/minecraft/world/phys/Vec3.f_82478_:Lnet/minecraft/world/phys/Vec3;
+     201: fload_3
+     202: invokevirtual #589                // Method net/createmod/catnip/outliner/Outliner.renderOutlines:(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/createmod/catnip/render/SuperRenderTypeBuffer;Lnet/minecraft/world/phys/Vec3;F)V
+     205: aload         4
+     207: invokevirtual #592                // Method com/mojang/blaze3d/vertex/PoseStack.m_85849_:()V
+     210: return
+
+  public void renderOverlay(net.createmod.ponder.foundation.ui.PonderUI, net.minecraft.client.gui.GuiGraphics, float);
+    Code:
+       0: aload_2
+       1: invokevirtual #502                // Method net/minecraft/client/gui/GuiGraphics.m_280168_:()Lcom/mojang/blaze3d/vertex/PoseStack;
+       4: invokevirtual #507                // Method com/mojang/blaze3d/vertex/PoseStack.m_85836_:()V
+       7: aload_0
+       8: ldc_w         #608                // class net/createmod/ponder/api/element/PonderOverlayElement
+      11: aload_0
+      12: aload_1
+      13: aload_2
+      14: fload_3
+      15: invokedynamic #618,  0            // InvokeDynamic #9:accept:(Lnet/createmod/ponder/foundation/PonderScene;Lnet/createmod/ponder/foundation/ui/PonderUI;Lnet/minecraft/client/gui/GuiGraphics;F)Ljava/util/function/Consumer;
+      20: invokevirtual #525                // Method forEachVisible:(Ljava/lang/Class;Ljava/util/function/Consumer;)V
+      23: aload_2
+      24: invokevirtual #502                // Method net/minecraft/client/gui/GuiGraphics.m_280168_:()Lcom/mojang/blaze3d/vertex/PoseStack;
+      27: invokevirtual #592                // Method com/mojang/blaze3d/vertex/PoseStack.m_85849_:()V
+      30: return
+
+  public void setPointOfInterest(net.minecraft.world.phys.Vec3);
+    Code:
+       0: aload_0
+       1: getfield      #623                // Field chasingPointOfInterest:Lnet/minecraft/world/phys/Vec3;
+       4: ifnonnull     12
+       7: aload_0
+       8: aload_1
+       9: putfield      #111                // Field pointOfInterest:Lnet/minecraft/world/phys/Vec3;
+      12: aload_0
+      13: aload_1
+      14: putfield      #623                // Field chasingPointOfInterest:Lnet/minecraft/world/phys/Vec3;
+      17: return
+
+  public net.minecraft.world.phys.Vec3 getPointOfInterest();
+    Code:
+       0: aload_0
+       1: getfield      #111                // Field pointOfInterest:Lnet/minecraft/world/phys/Vec3;
+       4: areturn
+
+  public void tick();
+    Code:
+       0: aload_0
+       1: getfield      #623                // Field chasingPointOfInterest:Lnet/minecraft/world/phys/Vec3;
+       4: ifnull        25
+       7: aload_0
+       8: ldc_w         #627                // float 0.25f
+      11: aload_0
+      12: getfield      #111                // Field pointOfInterest:Lnet/minecraft/world/phys/Vec3;
+      15: aload_0
+      16: getfield      #623                // Field chasingPointOfInterest:Lnet/minecraft/world/phys/Vec3;
+      19: invokestatic  #633                // Method net/createmod/catnip/math/VecHelper.lerp:(FLnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+      22: putfield      #111                // Field pointOfInterest:Lnet/minecraft/world/phys/Vec3;
+      25: aload_0
+      26: getfield      #131                // Field outliner:Lnet/createmod/catnip/outliner/Outliner;
+      29: invokevirtual #636                // Method net/createmod/catnip/outliner/Outliner.tickOutlines:()V
+      32: aload_0
+      33: getfield      #102                // Field world:Lnet/createmod/ponder/api/level/PonderLevel;
+      36: invokevirtual #638                // Method net/createmod/ponder/api/level/PonderLevel.tick:()V
+      39: aload_0
+      40: getfield      #206                // Field transform:Lnet/createmod/ponder/foundation/PonderScene$SceneTransform;
+      43: invokevirtual #639                // Method net/createmod/ponder/foundation/PonderScene$SceneTransform.tick:()V
+      46: aload_0
+      47: aload_0
+      48: invokedynamic #644,  0            // InvokeDynamic #10:accept:(Lnet/createmod/ponder/foundation/PonderScene;)Ljava/util/function/Consumer;
+      53: invokevirtual #445                // Method forEach:(Ljava/util/function/Consumer;)V
+      56: aload_0
+      57: getfield      #417                // Field currentTime:I
+      60: aload_0
+      61: getfield      #472                // Field totalTime:I
+      64: if_icmpge     77
+      67: aload_0
+      68: dup
+      69: getfield      #417                // Field currentTime:I
+      72: iconst_1
+      73: iadd
+      74: putfield      #417                // Field currentTime:I
+      77: aload_0
+      78: getfield      #201                // Field activeSchedule:Ljava/util/List;
+      81: invokeinterface #534,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      86: astore_1
+      87: aload_1
+      88: invokeinterface #543,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      93: ifeq          147
+      96: aload_1
+      97: invokeinterface #546,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     102: checkcast     #646                // class net/createmod/ponder/foundation/instruction/PonderInstruction
+     105: astore_2
+     106: aload_2
+     107: aload_0
+     108: invokevirtual #648                // Method net/createmod/ponder/foundation/instruction/PonderInstruction.tick:(Lnet/createmod/ponder/foundation/PonderScene;)V
+     111: aload_2
+     112: invokevirtual #651                // Method net/createmod/ponder/foundation/instruction/PonderInstruction.isComplete:()Z
+     115: ifeq          134
+     118: aload_1
+     119: invokeinterface #654,  1          // InterfaceMethod java/util/Iterator.remove:()V
+     124: aload_2
+     125: invokevirtual #657                // Method net/createmod/ponder/foundation/instruction/PonderInstruction.isBlocking:()Z
+     128: ifeq          87
+     131: goto          147
+     134: aload_2
+     135: invokevirtual #657                // Method net/createmod/ponder/foundation/instruction/PonderInstruction.isBlocking:()Z
+     138: ifeq          144
+     141: goto          147
+     144: goto          87
+     147: aload_0
+     148: getfield      #201                // Field activeSchedule:Ljava/util/List;
+     151: invokeinterface #660,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+     156: ifeq          164
+     159: aload_0
+     160: iconst_1
+     161: putfield      #459                // Field finished:Z
+     164: return
+
+  public void seekToTime(int);
+    Code:
+       0: iload_1
+       1: aload_0
+       2: getfield      #417                // Field currentTime:I
+       5: if_icmpge     19
+       8: new           #667                // class java/lang/IllegalStateException
+      11: dup
+      12: ldc_w         #669                // String Cannot seek backwards. Rewind first.
+      15: invokespecial #672                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      18: athrow
+      19: aload_0
+      20: getfield      #417                // Field currentTime:I
+      23: iload_1
+      24: if_icmpge     51
+      27: aload_0
+      28: getfield      #459                // Field finished:Z
+      31: ifne          51
+      34: aload_0
+      35: aload_0
+      36: invokedynamic #677,  0            // InvokeDynamic #11:accept:(Lnet/createmod/ponder/foundation/PonderScene;)Ljava/util/function/Consumer;
+      41: invokevirtual #445                // Method forEach:(Ljava/util/function/Consumer;)V
+      44: aload_0
+      45: invokevirtual #678                // Method tick:()V
+      48: goto          19
+      51: aload_0
+      52: ldc_w         #260                // class net/createmod/ponder/api/element/WorldSectionElement
+      55: invokedynamic #683,  0            // InvokeDynamic #12:accept:()Ljava/util/function/Consumer;
+      60: invokevirtual #276                // Method forEach:(Ljava/lang/Class;Ljava/util/function/Consumer;)V
+      63: return
+
+  public void addToSceneTime(int);
+    Code:
+       0: aload_0
+       1: getfield      #474                // Field stoppedCounting:Z
+       4: ifne          17
+       7: aload_0
+       8: dup
+       9: getfield      #472                // Field totalTime:I
+      12: iload_1
+      13: iadd
+      14: putfield      #472                // Field totalTime:I
+      17: return
+
+  public void stopCounting();
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: putfield      #474                // Field stoppedCounting:Z
+       5: return
+
+  public void markKeyframe(int);
+    Code:
+       0: aload_0
+       1: getfield      #474                // Field stoppedCounting:Z
+       4: ifne          23
+       7: aload_0
+       8: getfield      #233                // Field keyframeTimes:Lit/unimi/dsi/fastutil/ints/IntList;
+      11: aload_0
+      12: getfield      #472                // Field totalTime:I
+      15: iload_1
+      16: iadd
+      17: invokeinterface #690,  2          // InterfaceMethod it/unimi/dsi/fastutil/ints/IntList.add:(I)Z
+      22: pop
+      23: return
+
+  public void addElement(net.createmod.ponder.api.element.PonderElement);
+    Code:
+       0: aload_0
+       1: getfield      #136                // Field elements:Ljava/util/Set;
+       4: aload_1
+       5: invokeinterface #470,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+      10: pop
+      11: return
+
+  public <E extends net.createmod.ponder.api.element.PonderElement> void linkElement(E, net.createmod.ponder.api.element.ElementLink<E>);
+    Code:
+       0: aload_0
+       1: getfield      #141                // Field linkedElements:Ljava/util/Map;
+       4: aload_2
+       5: invokeinterface #703,  1          // InterfaceMethod net/createmod/ponder/api/element/ElementLink.getId:()Ljava/util/UUID;
+      10: aload_1
+      11: invokeinterface #707,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      16: pop
+      17: return
+
+  public <E extends net.createmod.ponder.api.element.PonderElement> E resolve(net.createmod.ponder.api.element.ElementLink<E>);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: getfield      #141                // Field linkedElements:Ljava/util/Map;
+       5: aload_1
+       6: invokeinterface #703,  1          // InterfaceMethod net/createmod/ponder/api/element/ElementLink.getId:()Ljava/util/UUID;
+      11: invokeinterface #717,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      16: checkcast     #719                // class net/createmod/ponder/api/element/PonderElement
+      19: invokeinterface #723,  2          // InterfaceMethod net/createmod/ponder/api/element/ElementLink.cast:(Lnet/createmod/ponder/api/element/PonderElement;)Lnet/createmod/ponder/api/element/PonderElement;
+      24: areturn
+
+  public <E extends net.createmod.ponder.api.element.PonderElement> java.util.Optional<E> resolveOptional(net.createmod.ponder.api.element.ElementLink<E>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #728                // Method resolve:(Lnet/createmod/ponder/api/element/ElementLink;)Lnet/createmod/ponder/api/element/PonderElement;
+       5: invokestatic  #734                // Method java/util/Optional.ofNullable:(Ljava/lang/Object;)Ljava/util/Optional;
+       8: areturn
+
+  public <E extends net.createmod.ponder.api.element.PonderElement> void runWith(net.createmod.ponder.api.element.ElementLink<E>, java.util.function.Consumer<E>);
+    Code:
+       0: aload_2
+       1: aload_0
+       2: aload_1
+       3: invokevirtual #728                // Method resolve:(Lnet/createmod/ponder/api/element/ElementLink;)Lnet/createmod/ponder/api/element/PonderElement;
+       6: invokeinterface #741,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      11: return
+
+  public <E extends net.createmod.ponder.api.element.PonderElement, F> F applyTo(net.createmod.ponder.api.element.ElementLink<E>, java.util.function.Function<E, F>);
+    Code:
+       0: aload_2
+       1: aload_0
+       2: aload_1
+       3: invokevirtual #728                // Method resolve:(Lnet/createmod/ponder/api/element/ElementLink;)Lnet/createmod/ponder/api/element/PonderElement;
+       6: invokeinterface #751,  2          // InterfaceMethod java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+      11: areturn
+
+  public void forEach(java.util.function.Consumer<? super net.createmod.ponder.api.element.PonderElement>);
+    Code:
+       0: aload_0
+       1: getfield      #136                // Field elements:Ljava/util/Set;
+       4: invokeinterface #756,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+       9: astore_2
+      10: aload_2
+      11: invokeinterface #543,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      16: ifeq          39
+      19: aload_2
+      20: invokeinterface #546,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      25: checkcast     #719                // class net/createmod/ponder/api/element/PonderElement
+      28: astore_3
+      29: aload_1
+      30: aload_3
+      31: invokeinterface #741,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      36: goto          10
+      39: return
+
+  public <T extends net.createmod.ponder.api.element.PonderElement> void forEach(java.lang.Class<T>, java.util.function.Consumer<T>);
+    Code:
+       0: aload_0
+       1: getfield      #136                // Field elements:Ljava/util/Set;
+       4: invokeinterface #756,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+       9: astore_3
+      10: aload_3
+      11: invokeinterface #543,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      16: ifeq          57
+      19: aload_3
+      20: invokeinterface #546,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      25: checkcast     #719                // class net/createmod/ponder/api/element/PonderElement
+      28: astore        4
+      30: aload_1
+      31: aload         4
+      33: invokevirtual #764                // Method java/lang/Class.isInstance:(Ljava/lang/Object;)Z
+      36: ifeq          54
+      39: aload_2
+      40: aload_1
+      41: aload         4
+      43: invokevirtual #766                // Method java/lang/Class.cast:(Ljava/lang/Object;)Ljava/lang/Object;
+      46: checkcast     #719                // class net/createmod/ponder/api/element/PonderElement
+      49: invokeinterface #741,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      54: goto          10
+      57: return
+
+  public <T extends net.createmod.ponder.api.element.PonderElement> void forEachVisible(java.lang.Class<T>, java.util.function.Consumer<T>);
+    Code:
+       0: aload_0
+       1: getfield      #136                // Field elements:Ljava/util/Set;
+       4: invokeinterface #756,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+       9: astore_3
+      10: aload_3
+      11: invokeinterface #543,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      16: ifeq          67
+      19: aload_3
+      20: invokeinterface #546,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      25: checkcast     #719                // class net/createmod/ponder/api/element/PonderElement
+      28: astore        4
+      30: aload_1
+      31: aload         4
+      33: invokevirtual #764                // Method java/lang/Class.isInstance:(Ljava/lang/Object;)Z
+      36: ifeq          64
+      39: aload         4
+      41: invokeinterface #773,  1          // InterfaceMethod net/createmod/ponder/api/element/PonderElement.isVisible:()Z
+      46: ifeq          64
+      49: aload_2
+      50: aload_1
+      51: aload         4
+      53: invokevirtual #766                // Method java/lang/Class.cast:(Ljava/lang/Object;)Ljava/lang/Object;
+      56: checkcast     #719                // class net/createmod/ponder/api/element/PonderElement
+      59: invokeinterface #741,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      64: goto          10
+      67: return
+
+  public <T extends net.minecraft.world.entity.Entity> void forEachWorldEntity(java.lang.Class<T>, java.util.function.Consumer<T>);
+    Code:
+       0: aload_0
+       1: getfield      #102                // Field world:Lnet/createmod/ponder/api/level/PonderLevel;
+       4: invokevirtual #778                // Method net/createmod/ponder/api/level/PonderLevel.getEntityList:()Ljava/util/List;
+       7: invokeinterface #534,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      12: astore_3
+      13: aload_3
+      14: invokeinterface #543,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      19: ifeq          60
+      22: aload_3
+      23: invokeinterface #546,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      28: checkcast     #538                // class net/minecraft/world/entity/Entity
+      31: astore        4
+      33: aload_1
+      34: aload         4
+      36: invokevirtual #764                // Method java/lang/Class.isInstance:(Ljava/lang/Object;)Z
+      39: ifeq          57
+      42: aload_2
+      43: aload_1
+      44: aload         4
+      46: invokevirtual #766                // Method java/lang/Class.cast:(Ljava/lang/Object;)Ljava/lang/Object;
+      49: checkcast     #538                // class net/minecraft/world/entity/Entity
+      52: invokeinterface #741,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      57: goto          13
+      60: return
+
+  public java.util.function.Supplier<java.lang.String> registerText(java.lang.String);
+    Code:
+       0: aload_0
+       1: getfield      #113                // Field textIndex:I
+       4: invokedynamic #794,  0            // InvokeDynamic #13:makeConcatWithConstants:(I)Ljava/lang/String;
+       9: astore_2
+      10: aload_0
+      11: getfield      #104                // Field localization:Lnet/createmod/ponder/foundation/registration/PonderLocalization;
+      14: aload_0
+      15: getfield      #126                // Field sceneId:Lnet/minecraft/resources/ResourceLocation;
+      18: aload_2
+      19: aload_1
+      20: invokevirtual #798                // Method net/createmod/ponder/foundation/registration/PonderLocalization.registerSpecific:(Lnet/minecraft/resources/ResourceLocation;Ljava/lang/String;Ljava/lang/String;)V
+      23: aload_0
+      24: aload_2
+      25: invokedynamic #809,  0            // InvokeDynamic #14:get:(Lnet/createmod/ponder/foundation/PonderScene;Ljava/lang/String;)Ljava/util/function/Supplier;
+      30: astore_3
+      31: aload_0
+      32: dup
+      33: getfield      #113                // Field textIndex:I
+      36: iconst_1
+      37: iadd
+      38: putfield      #113                // Field textIndex:I
+      41: aload_3
+      42: areturn
+
+  public java.util.function.Supplier<java.lang.String> registerText(java.lang.String, java.lang.Object...);
+    Code:
+       0: aload_0
+       1: getfield      #113                // Field textIndex:I
+       4: invokedynamic #794,  0            // InvokeDynamic #13:makeConcatWithConstants:(I)Ljava/lang/String;
+       9: astore_3
+      10: aload_0
+      11: getfield      #104                // Field localization:Lnet/createmod/ponder/foundation/registration/PonderLocalization;
+      14: aload_0
+      15: getfield      #126                // Field sceneId:Lnet/minecraft/resources/ResourceLocation;
+      18: aload_3
+      19: aload_1
+      20: invokevirtual #798                // Method net/createmod/ponder/foundation/registration/PonderLocalization.registerSpecific:(Lnet/minecraft/resources/ResourceLocation;Ljava/lang/String;Ljava/lang/String;)V
+      23: aload_0
+      24: aload_3
+      25: aload_2
+      26: invokedynamic #824,  0            // InvokeDynamic #15:get:(Lnet/createmod/ponder/foundation/PonderScene;Ljava/lang/String;[Ljava/lang/Object;)Ljava/util/function/Supplier;
+      31: astore        4
+      33: aload_0
+      34: dup
+      35: getfield      #113                // Field textIndex:I
+      38: iconst_1
+      39: iadd
+      40: putfield      #113                // Field textIndex:I
+      43: aload         4
+      45: areturn
+
+  public net.createmod.ponder.api.scene.SceneBuilder builder();
+    Code:
+       0: new           #830                // class net/createmod/ponder/foundation/PonderSceneBuilder
+       3: dup
+       4: aload_0
+       5: invokespecial #831                // Method net/createmod/ponder/foundation/PonderSceneBuilder."<init>":(Lnet/createmod/ponder/foundation/PonderScene;)V
+       8: areturn
+
+  public net.createmod.ponder.api.scene.SceneBuildingUtil getSceneBuildingUtil();
+    Code:
+       0: new           #835                // class net/createmod/ponder/foundation/PonderSceneBuildingUtil
+       3: dup
+       4: aload_0
+       5: invokevirtual #210                // Method getBounds:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+       8: invokespecial #838                // Method net/createmod/ponder/foundation/PonderSceneBuildingUtil."<init>":(Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)V
+      11: areturn
+
+  public java.lang.String getTitle();
+    Code:
+       0: aload_0
+       1: ldc           #25                 // String header
+       3: invokevirtual #842                // Method getString:(Ljava/lang/String;)Ljava/lang/String;
+       6: areturn
+
+  public java.lang.String getString(java.lang.String);
+    Code:
+       0: aload_0
+       1: getfield      #104                // Field localization:Lnet/createmod/ponder/foundation/registration/PonderLocalization;
+       4: aload_0
+       5: getfield      #126                // Field sceneId:Lnet/minecraft/resources/ResourceLocation;
+       8: aload_1
+       9: invokevirtual #846                // Method net/createmod/ponder/foundation/registration/PonderLocalization.getSpecific:(Lnet/minecraft/resources/ResourceLocation;Ljava/lang/String;)Ljava/lang/String;
+      12: areturn
+
+  public net.createmod.ponder.api.level.PonderLevel getWorld();
+    Code:
+       0: aload_0
+       1: getfield      #102                // Field world:Lnet/createmod/ponder/api/level/PonderLevel;
+       4: areturn
+
+  public java.lang.String getNamespace();
+    Code:
+       0: aload_0
+       1: getfield      #117                // Field namespace:Ljava/lang/String;
+       4: areturn
+
+  public int getKeyframeCount();
+    Code:
+       0: aload_0
+       1: getfield      #233                // Field keyframeTimes:Lit/unimi/dsi/fastutil/ints/IntList;
+       4: invokeinterface #853,  1          // InterfaceMethod it/unimi/dsi/fastutil/ints/IntList.size:()I
+       9: ireturn
+
+  public int getKeyframeTime(int);
+    Code:
+       0: aload_0
+       1: getfield      #233                // Field keyframeTimes:Lit/unimi/dsi/fastutil/ints/IntList;
+       4: iload_1
+       5: invokeinterface #858,  2          // InterfaceMethod it/unimi/dsi/fastutil/ints/IntList.getInt:(I)I
+      10: ireturn
+
+  public java.util.List<net.createmod.ponder.foundation.PonderTag> getTags();
+    Code:
+       0: aload_0
+       1: getfield      #189                // Field tags:Ljava/util/List;
+       4: areturn
+
+  public java.util.List<net.createmod.ponder.api.registration.StoryBoardEntry$SceneOrderingEntry> getOrderingEntries();
+    Code:
+       0: aload_0
+       1: getfield      #196                // Field orderingEntries:Ljava/util/List;
+       4: areturn
+
+  public net.minecraft.resources.ResourceLocation getLocation();
+    Code:
+       0: aload_0
+       1: getfield      #119                // Field location:Lnet/minecraft/resources/ResourceLocation;
+       4: areturn
+
+  public java.util.Set<net.createmod.ponder.api.element.PonderElement> getElements();
+    Code:
+       0: aload_0
+       1: getfield      #136                // Field elements:Ljava/util/Set;
+       4: areturn
+
+  public net.minecraft.world.level.levelgen.structure.BoundingBox getBounds();
+    Code:
+       0: aload_0
+       1: getfield      #102                // Field world:Lnet/createmod/ponder/api/level/PonderLevel;
+       4: ifnonnull     20
+       7: new           #212                // class net/minecraft/world/level/levelgen/structure/BoundingBox
+      10: dup
+      11: getstatic     #311                // Field net/minecraft/core/BlockPos.f_121853_:Lnet/minecraft/core/BlockPos;
+      14: invokespecial #870                // Method net/minecraft/world/level/levelgen/structure/BoundingBox."<init>":(Lnet/minecraft/core/BlockPos;)V
+      17: goto          27
+      20: aload_0
+      21: getfield      #102                // Field world:Lnet/createmod/ponder/api/level/PonderLevel;
+      24: invokevirtual #334                // Method net/createmod/ponder/api/level/PonderLevel.getBounds:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+      27: areturn
+
+  public net.minecraft.resources.ResourceLocation getId();
+    Code:
+       0: aload_0
+       1: getfield      #126                // Field sceneId:Lnet/minecraft/resources/ResourceLocation;
+       4: areturn
+
+  public net.createmod.ponder.foundation.PonderScene$SceneTransform getTransform();
+    Code:
+       0: aload_0
+       1: getfield      #206                // Field transform:Lnet/createmod/ponder/foundation/PonderScene$SceneTransform;
+       4: areturn
+
+  public net.createmod.catnip.outliner.Outliner getOutliner();
+    Code:
+       0: aload_0
+       1: getfield      #131                // Field outliner:Lnet/createmod/catnip/outliner/Outliner;
+       4: areturn
+
+  public boolean isFinished();
+    Code:
+       0: aload_0
+       1: getfield      #459                // Field finished:Z
+       4: ireturn
+
+  public void setFinished(boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #459                // Field finished:Z
+       5: return
+
+  public int getBasePlateOffsetX();
+    Code:
+       0: aload_0
+       1: getfield      #328                // Field basePlateOffsetX:I
+       4: ireturn
+
+  public int getBasePlateOffsetZ();
+    Code:
+       0: aload_0
+       1: getfield      #330                // Field basePlateOffsetZ:I
+       4: ireturn
+
+  public boolean shouldHidePlatformShadow();
+    Code:
+       0: aload_0
+       1: getfield      #115                // Field hidePlatformShadow:Z
+       4: ireturn
+
+  public int getBasePlateSize();
+    Code:
+       0: aload_0
+       1: getfield      #218                // Field basePlateSize:I
+       4: ireturn
+
+  public float getScaleFactor();
+    Code:
+       0: aload_0
+       1: getfield      #235                // Field scaleFactor:F
+       4: freturn
+
+  public float getYOffset();
+    Code:
+       0: aload_0
+       1: getfield      #237                // Field yOffset:F
+       4: freturn
+
+  public int getTotalTime();
+    Code:
+       0: aload_0
+       1: getfield      #472                // Field totalTime:I
+       4: ireturn
+
+  public int getCurrentTime();
+    Code:
+       0: aload_0
+       1: getfield      #417                // Field currentTime:I
+       4: ireturn
+
+  public void setNextUpEnabled(boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #86                 // Field nextUpEnabled:Z
+       5: return
+
+  public boolean isNextUpEnabled();
+    Code:
+       0: aload_0
+       1: getfield      #86                 // Field nextUpEnabled:Z
+       4: ireturn
+}

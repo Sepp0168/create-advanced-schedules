@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "create:item/brass_sheet",
+    "layer1": "create:item/schedule"
+  }
+}
